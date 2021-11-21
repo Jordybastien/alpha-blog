@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class CategoryTest < ActiveSupport::TestCase
-  
+  # TODO: setup method will run before every test
+  # Run rake test to execute tests
   def setup
     @category = Category.new(name: "sports")
   end

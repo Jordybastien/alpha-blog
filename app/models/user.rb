@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  # TODO: Relationship established also "dependent" will make sure we destroy depending articles
   has_many :articles, dependent: :destroy
   before_save { self.email = email.downcase }
   validates :username, presence: true, 

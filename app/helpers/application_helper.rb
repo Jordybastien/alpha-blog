@@ -1,4 +1,5 @@
 module ApplicationHelper
+  # TODO: Define helper functions here to be used within views
   def gravatar_for(user, options = { size: 80})
     gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
     size = options[:size]

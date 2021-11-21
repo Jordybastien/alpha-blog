@@ -1,9 +1,11 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :update, :show, :destroy]
+  # TODO: Here we are using the before_action method to check if the user is logged in
   before_action :require_user, except: [:index, :show]
   before_action :require_same_user, only: [:edit, :update, :destroy]
   
   def index
+    # TODO: PAG1 Pagination added here
     @articles = Article.paginate(page: params[:page], per_page: 5)
   end
   
@@ -52,6 +54,7 @@ class ArticlesController < ApplicationController
       params.require(:article).permit(:title, :description, category_ids: [])
     end
   
+    # TODO: Here we are using the require_same_user method to check if the user is the same as the one who created the article
     def require_same_user
       if current_user != @article.user and !current_user.admin?
         flash[:danger] = "You can only edit or delete your own articles"

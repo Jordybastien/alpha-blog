@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  # TODO: This is a method that is called before any action in this controller
   before_action :set_user, only: [:edit, :update, :show]
   before_action :require_same_user, only: [:edit, :update, :destroy]
   before_action :require_admin, only: [:destroy]
@@ -43,9 +44,11 @@ class UsersController < ApplicationController
     flash[:danger] = "User and all articles created by user have been deleted"
     redirect_to users_path
   end
-  
+  # TODO: Here we are defining a method that is called before any action in this controller
   private
+  # TODO: Here we define the parameters that are allowed to be passed to the create and update methods
   def user_params
+    # TODO: Here we are whitelisting the parameters that we want to allow to be passed to the model
     params.require(:user).permit(:username, :email, :password)
   end
   def set_user

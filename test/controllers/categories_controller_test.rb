@@ -12,7 +12,7 @@ class CategoriesControllerTest < ActionController::TestCase
   end
   
   test "should get new" do
-    session[:user_id] = @user.id
+    session[:user_id] = @user.id 
     get :new
     assert_response :success
   end
